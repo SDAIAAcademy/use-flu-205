@@ -1,37 +1,99 @@
 <article class="lab" data-lab="2.2">
-  <div class="box goal">
-    <h3>الهدف</h3>
-    <p>REPLACE: في النهاية يستطيع المشاركون …</p>
-  </div>
-
-  <h2>ما تحتاجه</h2>
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
   <ul>
-    <li>REPLACE: الملفات والأداة والحساب التي يستخدمها المختبر</li>
+    <li>مصفوفة أدوار منفَّذة: ما يُسمح وما يُمنع لمقدّم الطلب والمعتمِد ومدير الأداة ومن لم يدخل.</li>
+    <li>أسطر جديدة في سجل الاختبار، بنوع «وصول».</li>
   </ul>
+</div>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الأولى <span class="min">15 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-    <div class="prompt" data-tool="منصة البرمجة التوليدية">REPLACE: الأمر الذي ينسخه المشاركون، والأجزاء التي يغيّرونها <span class="ph">ملوّنة</span></div>
-  </div>
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/kit/ohda_seeded.zip" download><b>ohda_seeded.zip</b><span>النسخة المزروعة. ابدأ ببيانات جديدة: احذف ohda.db وشغّل من جديد.</span></a>
+  <a href="files/start/spec_reference.md" target="_blank"><b>spec_reference.md</b><span>القسم 5: جدول الوصول. هو ما تختبر عليه.</span></a>
+  <a href="files/start/test_record.csv" download><b>test_record.csv</b><span>سجل الاختبار الذي بدأته في المختبر 2.1.</span></a>
+</div>
+<p class="small">سياسة الذكاء الاصطناعي: الاختبار بيدك. الرموز التجريبية: <span class="ltr" dir="ltr">yasmin 2954</span> و<span class="ltr" dir="ltr">naif 6178</span> مقدّما طلب، <span class="ltr" dir="ltr">alanoud 4821</span> و<span class="ltr" dir="ltr">hilal 5617</span> معتمِدان، <span class="ltr" dir="ltr">maher 7306</span> مدير الأداة.</p>
+<div class="callout note"><b>نافذتان.</b> افتح الأداة في نافذة عادية ونافذة خاصة من المتصفح: دور في كل نافذة، فلا تخرج وتدخل في كل اختبار.</div>
 
-  <div class="step">
-    <h3>REPLACE: الخطوة الثانية <span class="min">10 د</span></h3>
-    <p>REPLACE: ما يفعله المشارك ولماذا، في جملتين</p>
-  </div>
+<h2>الخطوات</h2>
 
-  <div class="step stretch">
-    <h3>✱ إضافي</h3>
-    <p>REPLACE: توسعة لمن ينهي مبكرًا</p>
-  </div>
+<div class="step">
+  <h3>1 · اكتب مصفوفة الأدوار من جدول الوصول: ثلاثة أدوار وثمانية أفعال <span class="min">6 دقائق</span></h3>
+  <p>انقل جدول الوصول من المواصفات، وحوّل كل خانة إلى شيء تفعله بيدك. خانات «لا» أهم من خانات «نعم»: لكل «لا» اكتب كيف ستحاول.</p>
+  <table>
+    <tr><th>الفعل</th><th>كيف أحاوله وأنا ممنوع</th></tr>
+    <tr><td>يرى طلبات غيره</td><td>أفتح إيصال طلبي، ثم أغيّر الرقم في آخر العنوان</td></tr>
+    <tr><td>يعتمد أو يرفض</td><td>أكتب عنوان صفحة الطلبات المنتظرة بيدي: <span class="ltr" dir="ltr">/pending</span></td></tr>
+    <tr><td>يسلّم، ويخرج قطعة من الخدمة، ويصدّر</td><td>أكتب عنوان لوحة المدير بيدي: <span class="ltr" dir="ltr">/admin</span></td></tr>
+  </table>
+</div>
 
-  <h2>أسئلة تحقق</h2>
-  <ol class="checks">
-    <li>REPLACE: سؤال يبيّن أن المختبر نجح</li>
-  </ol>
+<div class="step">
+  <h3>2 · اختبر دور مقدّم الطلب: ما يراه وما يُمنع عنه، حتى بتغيير العنوان <span class="min">10 دقائق</span></h3>
+  <p>ادخل باسم <span class="ltr" dir="ltr">yasmin</span>. هل ترين رابطًا إلى لوحة المدير؟ ثم جرّبي ما لا يُسمح لك:</p>
+  <table>
+    <tr><th>المحاولة</th><th>المتوقع</th><th>ما حدث</th></tr>
+    <tr><td>افتحي «طلباتي» ثم إيصال طلبك، وغيّري الرقم في العنوان إلى 2</td><td>يُرفض: الطلب 2 لنايف</td><td class="fill"></td></tr>
+    <tr><td>اكتبي بعد العنوان: <span class="ltr" dir="ltr">/pending</span></td><td>يُرفض</td><td class="fill"></td></tr>
+    <tr><td>اكتبي بعد العنوان: <span class="ltr" dir="ltr">/admin</span></td><td>يُرفض</td><td class="fill"></td></tr>
+    <tr><td>إن فُتحت اللوحة: اضغطي «أخرجها من الخدمة» لقطعة</td><td>لا يجب أن تصلي إلى هنا</td><td class="fill"></td></tr>
+  </table>
+</div>
 
-  <details class="instructor">
-    <summary>للمدرّب</summary>
-    <p>REPLACE: مفتاح الإجابة والفخاخ والأخطاء الشائعة</p>
-  </details>
+<div class="step">
+  <h3>3 · اختبر دور المعتمِد: يعتمد طلب غيره لا طلبه <span class="min">8 دقائق</span></h3>
+  <p>ادخل باسم <span class="ltr" dir="ltr">alanoud</span> وافتح «بانتظار الاعتماد». الطلب 11 لطارق، والطلب 12 للعنود نفسها.</p>
+  <table>
+    <tr><th>المحاولة</th><th>المتوقع</th><th>ما حدث</th></tr>
+    <tr><td>اعتمد الطلب 11</td><td>يصير «معتمد»</td><td class="fill"></td></tr>
+    <tr><td>اعتمد الطلب 12</td><td>يُمنع: يعتمده هلال</td><td class="fill"></td></tr>
+    <tr><td>اكتب بعد العنوان: <span class="ltr" dir="ltr">/admin</span></td><td>يُرفض: المعتمِد ليس مديرًا</td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>4 · اختبر دور المدير، ثم الصفحات الإدارية والتصدير دون دخول <span class="min">10 دقائق</span></h3>
+  <p>ادخل باسم <span class="ltr" dir="ltr">maher</span>: التسليم والإرجاع والتصدير تعمل؟ هذا عمود «نعم». ثم انظر في أسفل لوحة المدير: ما العنوان المكتوب بجانب رابط التصدير؟</p>
+  <p>الآن اخرج من الأداة، أو افتح نافذة خاصة جديدة لم تدخل فيها، واكتب بعد العنوان ما يلي واحدًا واحدًا:</p>
+  <table>
+    <tr><th>العنوان دون دخول</th><th>المتوقع</th><th>ما حدث</th></tr>
+    <tr><td><span class="ltr" dir="ltr">/my</span></td><td>صفحة الدخول</td><td class="fill"></td></tr>
+    <tr><td><span class="ltr" dir="ltr">/admin</span></td><td>صفحة الدخول</td><td class="fill"></td></tr>
+    <tr><td><span class="ltr" dir="ltr">/export.csv</span></td><td>صفحة الدخول، ولا ملف</td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>5 · سجّل كل خلل: الدور والفعل والمتوقع وما حدث <span class="min">6 دقائق</span></h3>
+  <p>سطر لكل خلل في <code>test_record.csv</code> بنوع «وصول». اكتبه كما ستكتبه للوكيل أو للمطور:</p>
+  <table>
+    <tr><th>وصف لا يساعد</th><th>وصف يساعد</th></tr>
+    <tr><td>«الصلاحيات فيها مشكلة»</td><td>«دخلت مقدّمَ طلب، وكتبت عنوان لوحة المدير بيدي. المتوقع: رفض. ما حدث: فُتحت اللوحة، وأخرجت قطعة من الخدمة.»</td></tr>
+  </table>
+</div>
+
+<div class="step stretch">
+  <h3>✱ إضافي: على نموذجك أنت</h3>
+  <p>نفّذ المصفوفة نفسها على نموذجك من اليوم الأول. الأدوات التي يبنيها الوكلاء كثيرًا ما تخفي الزر وتترك العنوان مفتوحًا.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>رابط لوحة المدير لا يظهر لياسمين. لماذا لم يكفِ ذلك؟</li>
+  <li>أي خلل وجدته لا يحتاج إلى دخول أصلًا؟</li>
+  <li>كم خانة «لا» في جدول الوصول اختبرتها بمحاولة فعلية؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>الحل المرجعي: <code>labs/solutions/D2_2_role_test.md</code>. التحقق: <code>uv run labs/solutions/run_all.py 2.2</code>.</li>
+    <li>في تشغيل الحل تختلف النسخة المزروعة عن المواصفات في ثماني خانات، ووراءها ثلاثة أعطال: لوحة المدير وأفعالها تُفتح لأي داخل يكتب العنوان (ياسمين والعنود تفتحانها، وياسمين تخرج قطعة من الخدمة)؛ والعنود تعتمد طلبها هي؛ وياسمين تفتح إيصال نايف بتغيير الرقم.</li>
+    <li>والتصدير يخرج دون دخول من <code>/export.csv</code>: هذا يُسجَّل هنا بنوع «وصول»، ويعود في المختبر 2.3 من جهة ما في الملف.</li>
+    <li>صفحة الطلبات المنتظرة سليمة في النسخة المزروعة: ياسمين تُرفض. نبّه إلى أن صفحة محمية لا تعني أن جارتها محمية: كل عنوان يُختبر.</li>
+    <li>الخطأ الشائع: اختبار عمود «نعم» فقط، والاكتفاء بأن الرابط لا يظهر. اطلب محاولة فعلية لكل «لا».</li>
+    <li>من اعتمد الطلب 12 باسم العنود في أول محاولة: يحذف <code>ohda.db</code> ليعيد.</li>
+  </ul>
+</details>
 </article>
