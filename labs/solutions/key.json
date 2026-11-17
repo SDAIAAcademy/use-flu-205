@@ -1,0 +1,54 @@
+{
+  "lab_1_1": {
+    "bins": {"1": "build", "2": "build", "3": "hand_over", "4": "hand_over", "5": "it_review", "6": "it_review", "7": "hand_over", "8": "build"},
+    "pass": 7
+  },
+  "lab_1_4": {
+    "log": [
+      "step 2: ohda_step2 passes 7 of 7 -> kept",
+      "step 3: ohda_step3_broken fails AT5 -> rolled back to ohda_step2",
+      "step 3: ohda_step3 passes 9 of 9 -> kept"
+    ]
+  },
+  "lab_2_1": {
+    "reference": {
+      "late": {"1": 0, "2": 3, "3": 0, "4": 2, "5": 0}, "total": 5, "out_now": "3 من 24", "overdue": 1, "return_6": 2,
+      "edge": {"a": "refused", "b": "refused", "c": "accepted", "d": "refused", "e": "refused", "f": "accepted"},
+      "search_hits": 4, "receipt_rtl": true
+    },
+    "seeded": {
+      "late": {"1": 1, "2": 4, "3": 0, "4": 3, "5": 1}, "total": 9, "out_now": "3 من 24", "overdue": 1, "return_6": 3,
+      "edge": {"a": "refused", "b": "refused", "c": "accepted", "d": "accepted", "e": "refused", "f": "accepted"},
+      "search_hits": 0, "receipt_rtl": false
+    }
+  },
+  "lab_2_2": {
+    "reference": {
+      "yasmin": {"list": "yes", "others_request": "no", "pending_list": "no", "admin_page": "no", "export": "no", "retire_item": "no"},
+      "alanoud": {"list": "yes", "others_request": "yes", "pending_list": "yes", "admin_page": "no", "export": "no", "approve_own": "no"},
+      "maher": {"list": "yes", "others_request": "yes", "pending_list": "yes", "admin_page": "yes", "export": "yes"},
+      "anonymous": {"list": "no", "others_request": "no", "pending_list": "no", "admin_page": "no", "export": "no"}
+    },
+    "seeded": {
+      "yasmin": {"list": "yes", "others_request": "yes", "pending_list": "no", "admin_page": "yes", "export": "yes", "retire_item": "yes"},
+      "alanoud": {"list": "yes", "others_request": "yes", "pending_list": "yes", "admin_page": "yes", "export": "yes", "approve_own": "yes"},
+      "maher": {"list": "yes", "others_request": "yes", "pending_list": "yes", "admin_page": "yes", "export": "yes"},
+      "anonymous": {"list": "no", "others_request": "no", "pending_list": "no", "admin_page": "no", "export": "yes"}
+    }
+  },
+  "lab_2_3": {
+    "secrets": [["app.py", 31], ["app.py", 32], ["notes.txt", 3]]
+  },
+  "faults": {
+    "F1": {"kind": "calculation", "lab": "2.1", "what": "late days are one too many whenever a loan is returned on or after its end date"},
+    "F2": {"kind": "calculation", "lab": "2.1", "what": "a loan of eight days is accepted: the limit counts the difference, not both days"},
+    "F3": {"kind": "arabic", "lab": "2.1", "what": "the search finds nothing when hamza or ta marbuta is typed differently"},
+    "F4": {"kind": "arabic", "lab": "2.1", "what": "the receipt page is left to right"},
+    "F5": {"kind": "access", "lab": "2.2", "what": "the administrator's page and its actions open for any signed-in user who types the address"},
+    "F6": {"kind": "access", "lab": "2.2", "what": "an approver can approve their own request"},
+    "F7": {"kind": "access", "lab": "2.2", "what": "any signed-in user opens another person's receipt by changing the number in the address"},
+    "F8": {"kind": "data", "lab": "2.3", "what": "the export link works without sign-in and carries names, mobiles and ID numbers"},
+    "F9": {"kind": "data", "lab": "2.3", "what": "mobiles and ID numbers are stored although the specification has no such field, and the mobile of whoever holds an item is shown to every user"},
+    "F10": {"kind": "secret", "lab": "2.3", "what": "an SMS service key and a reset password are written in app.py, and the password again in notes.txt"}
+  }
+}

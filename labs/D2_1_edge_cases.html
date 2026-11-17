@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.1 · الحالات الطرفية والحساب باليد · بناء أدوات صغيرة دون برمجة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_1_edge_cases.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-1">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.1</span>
+<h1>الحالات الطرفية والحساب باليد</h1>
+<p>على النسخة المزروعة من «عُهدة»: تحسب باليد أيام الإعارة وأيام التأخير لخمس إعارات وتقارنها بالشاشة، ثم تختبر ست حالات طرفية والنص العربي، وتبدأ سجل الاختبار.</p>
+<div class="meta"><span>40 دقيقة</span><span>اليوم 2</span><span>الجلسة 1: الحالات الطرفية والحساب باليد</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.1">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>جدول حساب باليد لخمس إعارات، مقارَنًا بما تعرضه الأداة.</li>
+    <li>نتيجة ست حالات طرفية، واختبارين للنص العربي.</li>
+    <li>أول أسطر سجل الاختبار، وهو دليل الناتج الرابع، ويكتمل في المختبرين 2.2 و2.3.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/kit/ohda_seeded.zip" download><b>ohda_seeded.zip</b><span>نسخة من «عُهدة» بعد الخطوة 4، تعمل في العرض، وفيها أعطال مزروعة عمدًا. للتدريب فقط.</span></a>
+  <a href="files/start/test_record.csv" download><b>test_record.csv</b><span>قالب سجل الاختبار. افتحه في جدول بيانات، وأكمله في المختبرات الثلاثة.</span></a>
+  <a href="files/start/spec_reference.md" target="_blank"><b>spec_reference.md</b><span>المواصفات المرجعية: القواعد التي تحسب بها.</span></a>
+</div>
+<p class="small">سياسة الذكاء الاصطناعي: الحساب باليد <b>دون ذكاء اصطناعي</b>: أنت المرجع الذي تُقارَن به الأداة. الرموز التجريبية: <span class="ltr" dir="ltr">maher 7306</span> مدير الأداة، و<span class="ltr" dir="ltr">yasmin 2954</span> مقدّمة طلب. تاريخ اليوم في النموذج 2027-03-07.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · شغّل النسخة المزروعة وادخل بدور مدير الأداة <span class="min">4 دقائق</span></h3>
+  <p>فك <code>ohda_seeded.zip</code>، وداخل المجلد:</p>
+  <pre class="code"><code class="language-bash">uv run app.py</code></pre>
+  <p>افتح العنوان المطبوع، وادخل باسم <span class="ltr" dir="ltr">maher</span>، وافتح «لوحة المدير». لا تغيّر شيئًا بعد.</p>
+  <p class="small">لتعود البيانات إلى أولها في أي وقت: أوقف الأداة بالضغط على Ctrl+C، واحذف الملف <code>ohda.db</code> من المجلد، وشغّل من جديد.</p>
+</div>
+
+<div class="step">
+  <h3>2 · احسب باليد أيام الإعارة وأيام التأخير لخمس إعارات معادة <span class="min">10 دقائق</span></h3>
+  <p>القاعدتان من المواصفات: مدة الإعارة تحسب يوم البداية ويوم النهاية كليهما؛ وأيام التأخير = تاريخ الإرجاع ناقص تاريخ النهاية، ولا تقل عن صفر. احسب <b>قبل</b> أن تنظر إلى أعمدة الأداة.</p>
+  <table>
+    <tr><th>الطلب</th><th>من</th><th>إلى</th><th>أُرجعت في</th><th>المدة بالأيام</th><th>أيام التأخير</th></tr>
+    <tr><td>1</td><td>2027-02-15</td><td>2027-02-18</td><td>2027-02-18</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>2</td><td>2027-02-16</td><td>2027-02-20</td><td>2027-02-23</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>3</td><td>2027-02-21</td><td>2027-02-22</td><td>2027-02-21</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>4</td><td>2027-02-22</td><td>2027-02-28</td><td>2027-03-02</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>5</td><td>2027-02-24</td><td>2027-02-26</td><td>2027-02-26</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td colspan="5">مجموع أيام التأخير في الإعارات المعادة</td><td class="fill"></td></tr>
+  </table>
+  <p class="small">فبراير 2027 فيه 28 يومًا.</p>
+</div>
+
+<div class="step">
+  <h3>3 · قارن حسابك بالشاشة وسجّل كل فرق في سجل الاختبار <span class="min">8 دقائق</span></h3>
+  <p>قارن عمودَي «المدة بالأيام» و«أيام التأخير» في لوحة المدير بجدولك، ثم الرقم الكبير «مجموع أيام التأخير». ثم سجّل إرجاع الطلب 7 (نهايته 2027-03-08) والطلب 6 (نهايته 2027-03-05): كم يجب أن تكون أيام التأخير لكل منهما واليوم 2027-03-07؟ وكم عرضت الأداة؟</p>
+  <p>كل فرق سطر في <code>test_record.csv</code>: الدور، وما فعلته، والمتوقع، وما حدث. لا تكتب «الحساب خاطئ»: اكتب الرقمين.</p>
+</div>
+
+<div class="step">
+  <h3>4 · اختبر ست حالات طرفية للتواريخ والمدة القصوى <span class="min">10 دقائق</span></h3>
+  <p>ادخل باسم <span class="ltr" dir="ltr">yasmin</span>. لكل حالة: اكتب المتوقع من القواعد أولًا، ثم جرّب.</p>
+  <table>
+    <tr><th>الحالة</th><th>القطعة</th><th>من</th><th>إلى</th><th>المتوقع</th><th>ما حدث</th></tr>
+    <tr><td>أ · نهاية قبل البداية</td><td>EQ-008</td><td>2027-03-12</td><td>2027-03-10</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>ب · بداية في الماضي</td><td>EQ-008</td><td>2027-03-05</td><td>2027-03-06</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>ج · عند الحد تمامًا</td><td>EQ-009</td><td>2027-03-10</td><td>2027-03-16</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>د · فوق الحد بيوم</td><td>EQ-008</td><td>2027-03-10</td><td>2027-03-17</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>هـ · تبدأ يوم نهاية حجز قائم</td><td>EQ-001</td><td>2027-03-12</td><td>2027-03-13</td><td class="fill"></td><td class="fill"></td></tr>
+    <tr><td>و · يوم واحد</td><td>EQ-013</td><td>2027-03-09</td><td>2027-03-09</td><td class="fill"></td><td class="fill"></td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>5 · اختبر البحث بالهمزة وصفحة الإيصال <span class="min">8 دقائق</span></h3>
+  <p>في صفحة المعدات ابحث عن <b>إضاءة</b> كما تُكتب، ثم عن <b>اضاءه</b> كما يكتبها مستعجل. كم نتيجة في كل مرة؟ ثم افتح «طلباتي» واضغط «الإيصال» لأي طلب: من أي جهة يبدأ النص؟ وأين وقع رمز القطعة من اسمها؟</p>
+  <p>سجّل ما تجده في سجل الاختبار بنوع «نص عربي».</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ إضافي: على نموذجك أنت</h3>
+  <p>نفّذ الحالات الطرفية الست على نموذجك من اليوم الأول، أو على <a href="files/kit/ohda_step4.zip" download><span class="ltr" dir="ltr">ohda_step4.zip</span></a>، وقارن النتيجتين.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>أي إعارة كشفت خطأ أيام التأخير أوضح من غيرها، ولماذا هي؟</li>
+  <li>الحالة «ج» نجحت والحالة «د» فشلت. ماذا يقول ذلك عن موضع الخطأ؟</li>
+  <li>لو لم تحسب باليد أولًا، هل كنت سترى أن الرقم 9 خطأ؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>الحل المرجعي: <code>labs/solutions/D2_1_edge_cases.md</code>. التحقق: <code>uv run labs/solutions/run_all.py 2.1</code>.</li>
+    <li>الحساب باليد: المدد 4 و5 و2 و7 و3، وأيام التأخير 0 و3 و0 و2 و0، والمجموع 5. الأداة المزروعة تعرض 1 و4 و0 و3 و1، والمجموع 9. إرجاع الطلب 7 صحيحه 0 (والأداة تعرض 0 لأنه قبل النهاية بيوم)، والطلب 6 صحيحه 2 والأداة تعرض 3.</li>
+    <li>العطل الأول: أيام التأخير تزيد واحدًا كلما أُرجعت القطعة في يوم النهاية أو بعده. الطلب 1 والطلب 5 أوضح ما يكشفه: إرجاع في يوم النهاية يُحسب تأخيرًا.</li>
+    <li>الحالات الطرفية: المتوقع رفض، رفض، قبول، رفض، رفض، قبول. الأداة المزروعة تقبل «د»: إعارة من ثمانية أيام. هذا العطل الثاني.</li>
+    <li>النص العربي: «إضاءة» تعطي 4 نتائج، و«اضاءه» تعطي 0، والمتوقع 4 (العطل الثالث). وصفحة الإيصال من اليسار إلى اليمين (العطل الرابع).</li>
+    <li>من يسجل إرجاع الطلبين قبل أن يحسب: يحذف <code>ohda.db</code> ويبدأ من جديد.</li>
+    <li>لا تكشف أعطال الأدوار والبيانات إن لاحظها مشارك: «سجّلها، وهي موضوع المختبرين التاليين».</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D1_4_small_steps.html" rel="prev">→ المختبر السابق</a><a href="D2_2_role_test.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · بناء أدوات صغيرة دون برمجة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 8ea016a</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T13:22:44Z","version":"2027.1.0","commit":"8ea016a"},"course":{"id":"use-flu-205","code":"USE-FLU-205","title":"بناء أدوات صغيرة دون برمجة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-flu-205/","repo":"SDAIAAcademy/use-flu-205","home":"../index.html"},"lab":{"id":"2.1","title":"الحالات الطرفية والحساب باليد","summary":"على النسخة المزروعة من «عُهدة»: تحسب باليد أيام الإعارة وأيام التأخير لخمس إعارات وتقارنها بالشاشة، ثم تختبر ست حالات طرفية والنص العربي، وتبدأ سجل الاختبار.","minutes":40,"day":2,"unit":"اليوم 2","session":1,"deck":"../slides/day2.html#lab-2-1","prev":"D1_4_small_steps.html","next":"D2_2_role_test.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

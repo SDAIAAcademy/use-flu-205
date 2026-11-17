@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.4 · خطوات صغيرة بسجل تغييرات · بناء أدوات صغيرة دون برمجة</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_4_small_steps.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-4">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.4</span>
+<h1>خطوات صغيرة بسجل تغييرات</h1>
+<p>من نقطة حفظ الخطوة 1 (أو حالتها المرجعية) تبني قواعد التواريخ ثم الاعتماد، خطوة خطوة، وتكتشف تغييرًا كسر قاعدة سابقة وتتراجع عنه، وتخرج بسجل تغييرات كامل.</p>
+<div class="meta"><span>45 دقيقة</span><span>اليوم 1</span><span>الجلسة 4: خطوات صغيرة ونقاط حفظ وتراجع</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.4">
+<div class="box goal">
+  <h3>ستخرج من هذا المختبر بـ</h3>
+  <ul>
+    <li>«عُهدة» بعد الخطوة 3: قواعد التواريخ، ومنع التعارض، والاعتماد والرفض.</li>
+    <li>سجل تغييرات فيه سطر ونتيجة اختبار لكل خطوة، وفيه تراجع واحد مسجَّل بسببه.</li>
+    <li>مع النموذج الأولي، هذا السجل دليل الناتج الثالث للمقرر.</li>
+  </ul>
+</div>
+
+<h2>ما تحتاجه</h2>
+<div class="files">
+  <a href="files/kit/ohda_step1.zip" download><b>ohda_step1.zip</b><span>الحالة المرجعية للخطوة 1. ابدأ منها إن لم تكن لك نقطة حفظ من المختبر 1.3.</span></a>
+  <a href="files/kit/ohda_step3_broken.zip" download><b>ohda_step3_broken.zip</b><span>ردّ وكيل على طلب الخطوة 3 كسر شيئًا قديمًا. للخطوة 4 من هذا المختبر.</span></a>
+  <a href="files/kit/ohda_step2.zip" download><b>ohda_step2.zip</b><span>الحالة المرجعية للخطوة 2. بديل إن تعطلت منصتك.</span></a>
+  <a href="files/kit/ohda_step3.zip" download><b>ohda_step3.zip</b><span>الحالة المرجعية للخطوة 3. بديل إن تعطلت منصتك.</span></a>
+  <a href="files/start/spec_reference.md" target="_blank"><b>spec_reference.md</b><span>المواصفات المرجعية واختبارات القبول بأرقامها.</span></a>
+  <a href="files/start/change_log_template.md" download><b>change_log_template.md</b><span>قالب سجل التغييرات، إن لم تبدأه.</span></a>
+</div>
+<p class="small">سياسة الذكاء الاصطناعي: مسموح كاملًا. الوكيل يكتب، وأنت تختبر وتقبل أو تتراجع. بيانات اصطناعية فقط. الرموز التجريبية: <span class="ltr" dir="ltr">yasmin 2954</span>، <span class="ltr" dir="ltr">naif 6178</span>، <span class="ltr" dir="ltr">tarek 1743</span>، <span class="ltr" dir="ltr">alanoud 4821</span>، <span class="ltr" dir="ltr">hilal 5617</span>.</p>
+
+<h2>الخطوات</h2>
+
+<div class="step">
+  <h3>1 · ابدأ من نقطة حفظ الخطوة 1 أو من حالتها المرجعية <span class="min">4 دقائق</span></h3>
+  <p>تأكد أن نقطة الحفظ «الخطوة 1» موجودة وأن الأداة تعمل. لا نقطة حفظ عندك؟ فك <code>ohda_step1.zip</code> وابدأ منه، واكتب ذلك في السطر الأول من السجل.</p>
+  <p class="small">قبل كل تشغيل جديد احذف الملف <code>ohda.db</code> إن وُجد: الأداة تنشئه من ملفات البيانات، فتبدأ كل جولة اختبار من الإعارات الأربع عشرة نفسها.</p>
+</div>
+
+<div class="step">
+  <h3>2 · الخطوة 2: قواعد التواريخ ومنع التعارض، ثم اختباراتها <span class="min">12 دقيقة</span></h3>
+  <div class="prompt" data-tool="منصة البرمجة التوليدية">تغيير واحد: طبّق القواعد 1 و2 و3 من spec.md على نموذج الطلب: النهاية لا تسبق البداية، والبداية لا تسبق اليوم، والمدة 7 أيام على الأكثر بحساب اليومين، ولا تعارض مع طلب منتظر أو معتمد أو مُسلَّم للقطعة نفسها. رسالة الرفض تذكر السبب. لا تغيّر غير ذلك.</div>
+  <p>ثم نفّذ بيدك، داخلًا باسم <span class="ltr" dir="ltr">yasmin</span>:</p>
+  <table>
+    <tr><th>الاختبار</th><th>ما تدخله</th><th>المتوقع</th><th>نجح؟</th></tr>
+    <tr><td>AT3</td><td>EQ-008 من 2027-03-12 إلى 2027-03-10</td><td>يُرفض: النهاية قبل البداية</td><td class="fill"></td></tr>
+    <tr><td>AT4</td><td>EQ-008 من 03-10 إلى 03-17، ثم EQ-009 من 03-10 إلى 03-16</td><td>يُرفض الأول، ويُقبل الثاني</td><td class="fill"></td></tr>
+    <tr><td>AT5</td><td>EQ-001 من 03-12 إلى 03-13، ثم من 03-13 إلى 03-14</td><td>يُرفض الأول، ويُقبل الثاني</td><td class="fill"></td></tr>
+    <tr><td>السابقة</td><td>AT1 و AT2 و AT10 و AT11</td><td>ما زالت تنجح</td><td class="fill"></td></tr>
+  </table>
+  <p>نجحت السبعة؟ نقطة حفظ «الخطوة 2»، وسطر في السجل.</p>
+</div>
+
+<div class="step">
+  <h3>3 · الخطوة 3: الاعتماد والرفض، ثم أعد كل الاختبارات السابقة <span class="min">12 دقيقة</span></h3>
+  <div class="prompt" data-tool="منصة البرمجة التوليدية">تغيير واحد: أضف صفحة «بانتظار الاعتماد» للمعتمِد ومدير الأداة فقط، وفيها زر اعتماد وزر رفض لكل طلب. لا يعتمد أحد طلبه هو. المنع في الخادم: من ليس معتمِدًا يُرفض إن كتب العنوان. لا تغيّر قواعد الطلب.</div>
+  <table>
+    <tr><th>الاختبار</th><th>ما تفعله</th><th>المتوقع</th><th>نجح؟</th></tr>
+    <tr><td>AT6</td><td><span class="ltr" dir="ltr">alanoud</span> تعتمد الطلب 11، ثم <span class="ltr" dir="ltr">tarek</span> يفتح «طلباتي»</td><td>حالة الطلب 11 «معتمد»</td><td class="fill"></td></tr>
+    <tr><td>AT7</td><td><span class="ltr" dir="ltr">alanoud</span> تحاول اعتماد الطلب 12؛ و<span class="ltr" dir="ltr">yasmin</span> تكتب عنوان صفحة الطلبات المنتظرة</td><td>الطلب 12 يبقى منتظرًا؛ وتُرفض ياسمين</td><td class="fill"></td></tr>
+    <tr><td>السابقة</td><td>السبعة كلها، من AT1 إلى AT5 و AT10 و AT11</td><td>ما زالت تنجح</td><td class="fill"></td></tr>
+  </table>
+  <p>نجحت التسعة؟ نقطة حفظ «الخطوة 3»، وسطر في السجل. فشل اختبار قديم؟ لا تطلب إصلاحًا فوق إصلاح: انتقل إلى الخطوة التالية وافعل ما تفعله فيها.</p>
+</div>
+
+<div class="step">
+  <h3>4 · شغّل التغيير المكسور: اكتشفه بالاختبار وتراجع إلى نقطة الحفظ <span class="min">9 دقائق</span></h3>
+  <p>فك <code>ohda_step3_broken.zip</code> وشغّله. هذا ردّ وكيل على طلب الخطوة 3: الاعتماد يعمل، والشاشة سليمة. نفّذ عليه الاختبارات التسعة. أيها فشل؟</p>
+  <p>ثم تصرّف كما تتصرف في مشروعك: (1) لا تقبل التغيير، (2) عد إلى نقطة حفظ «الخطوة 2»، (3) اكتب الطلب من جديد أدق، (4) سجّل في السجل سطرًا للتغيير المرفوض بسببه.</p>
+  <table>
+    <tr><th>طلب يكسر</th><th>طلب أدق</th></tr>
+    <tr><td>«أضف الاعتماد ورتّب الشيفرة»</td><td>«أضف الاعتماد والرفض فقط. لا تغيّر قواعد الطلب، ولا تُعد كتابة ما يعمل»</td></tr>
+  </table>
+</div>
+
+<div class="step">
+  <h3>5 · أكمل سجل التغييرات: سطر ونتيجة اختبار لكل خطوة <span class="min">8 دقائق</span></h3>
+  <p>راجع السجل: في كل سطر تغيير واحد، ونقطة الحفظ قبله، وأرقام الاختبارات التي نفذتها، والنتيجة، والقرار. سطر بلا نتيجة اختبار تغيير لم يُقبل بعد. بادل سجلك مع زميل: هل يستطيع أن يعيد خطوتك الثانية من سجلك وحده؟</p>
+</div>
+
+<div class="step stretch">
+  <h3>✱ إضافي: الخطوة 4</h3>
+  <p>ابنِ الخطوة 4: لوحة المدير، والتسليم والإرجاع، وأيام التأخير، والتصدير للمدير فقط. اختبرها بـ AT8 و AT9 ثم بالتسعة السابقة. الحالة المرجعية: <a href="files/kit/ohda_step4.zip" download><span class="ltr" dir="ltr">ohda_step4.zip</span></a>، وهي ما يبدأ منه اليوم الثاني. رمز المدير: <span class="ltr" dir="ltr">maher 7306</span>.</p>
+</div>
+
+<h2>أسئلة تحقق</h2>
+<ol class="checks">
+  <li>في التغيير المكسور: أي اختبار فشل؟ وهل كانت الشاشة ستدلك عليه دون الاختبار؟</li>
+  <li>لماذا تراجعت إلى نقطة الحفظ ولم تطلب من الوكيل إصلاح ما كسره؟</li>
+  <li>كم اختبارًا نفذت بعد الخطوة 3، وكم منها جديد؟</li>
+</ol>
+
+<details class="instructor">
+  <summary>للمدرّب</summary>
+  <ul>
+    <li>الحل المرجعي: <code>labs/solutions/D1_4_small_steps.md</code>، والسجل المرجعي في <code>labs/solutions/reference/change_log.md</code>. التحقق: <code>uv run labs/solutions/run_all.py 1.4</code>.</li>
+    <li>في تشغيل الحل بوكيل بديل: الخطوة 2 نجحت في 7 من 7 فقُبلت؛ والتغيير المكسور نجح في AT6 و AT7 وفشل في AT5 (قُبل طلب يتقاطع مع حجز قائم) فتُرك وعاد العمل إلى الخطوة 2؛ والخطوة 3 نجحت في 9 من 9.</li>
+    <li>الخطأ الشائع: اختبار الجديد فقط. من لم يُعد AT5 بعد الخطوة 3 لا يرى الكسر. والخطأ الثاني: «أصلح ما كسرته» ثلاث مرات. القاعدة: فشل قديم بعد تغيير جديد يعني تراجعًا.</li>
+    <li>من سبق وبنى له وكيله الخطوة 3 سليمة: ينفذ الخطوة 4 من المختبر على الملف المكسور كما هي، فالتمرين على التراجع لا على الوكيل.</li>
+    <li>لم يُشغَّل هذا المختبر على وكيل حقيقي في إعداد المقرر. الحالات المرجعية اختُبرت كلها بسكربت يؤدي الأدوار الثلاثة عبر المتصفح.</li>
+  </ul>
+</details>
+</article>
+<nav class="pager"><a href="D1_3_instruction_file.html" rel="prev">→ المختبر السابق</a><a href="D2_1_edge_cases.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · بناء أدوات صغيرة دون برمجة<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 8ea016a</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T13:22:44Z","version":"2027.1.0","commit":"8ea016a"},"course":{"id":"use-flu-205","code":"USE-FLU-205","title":"بناء أدوات صغيرة دون برمجة","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-flu-205/","repo":"SDAIAAcademy/use-flu-205","home":"../index.html"},"lab":{"id":"1.4","title":"خطوات صغيرة بسجل تغييرات","summary":"من نقطة حفظ الخطوة 1 (أو حالتها المرجعية) تبني قواعد التواريخ ثم الاعتماد، خطوة خطوة، وتكتشف تغييرًا كسر قاعدة سابقة وتتراجع عنه، وتخرج بسجل تغييرات كامل.","minutes":45,"day":1,"unit":"اليوم 1","session":4,"deck":"../slides/day1.html#lab-1-4","prev":"D1_3_instruction_file.html","next":"D2_1_edge_cases.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>
