@@ -148,7 +148,7 @@
     <div class="card c-teal flat"><p class="small mb0"><b>الرقمان دائمًا.</b> «المتوقع 0، وظهر 1»، لا «الحساب خاطئ».</p></div>
     <div class="card c-purple flat"><p class="small mb0"><b>سجل واحد لليوم كله.</b> يكتمل في المختبرات الثلاثة، وهو دليل الناتج الرابع.</p></div>
   </div>
-  <aside class="notes"><p>القالب ملف جدول في حزمة المختبر، وفيه عشرة أعمدة: على الشاشة أهم ستة منها.الفرق بين سجل الاختبار وسجل التغييرات: الأول ما وجدته، والثاني ما غيّرته. يلتقيان عند الإصلاح: سطر في سجل الاختبار يصير طلبًا للوكيل، ثم سطرًا في سجل التغييرات، ثم يُملأ العمود الأخير في سجل الاختبار بعد إعادته.</p></aside>
+  <aside class="notes"><p>القالب ملف جدول في حزمة المختبر، وفيه عشرة أعمدة: على الشاشة أهم ستة منها. الفرق بين سجل الاختبار وسجل التغييرات: الأول ما وجدته، والثاني ما غيّرته. يلتقيان عند الإصلاح: سطر في سجل الاختبار يصير طلبًا للوكيل، ثم سطرًا في سجل التغييرات، ثم يُملأ العمود الأخير في سجل الاختبار بعد إعادته.</p></aside>
 </section>
 
 <section class="slide" id="check-off-by-one" data-lo="LO4">
@@ -397,15 +397,18 @@
 <section class="slide" id="what-a-scan-finds" data-lo="LO4" data-label="الفحص">
   <div class="kicker">من تشغيل المختبر</div>
   <h2>فحص الأسرار يقرأ الملفات ويشير إلى السطر</h2>
-  <pre class="code"><code class="language-text">app.py:31: value written for a name that suggests a secret
-app.py:32: value written for a name that suggests a secret
-notes.txt:3: password written in a note
-found: 3</code></pre>
+  <table class="t small">
+    <tr><th>الملف والسطر</th><th>سبب الاشتباه</th><th>القيمة، مقنَّعة</th></tr>
+    <tr><td><span class="ltr" dir="ltr">app.py:31</span></td><td>قيمة مكتوبة لاسم يدل على سر</td><td><span class="ltr" dir="ltr">wmd-…</span> (40 حرفًا)</td></tr>
+    <tr><td><span class="ltr" dir="ltr">app.py:32</span></td><td>قيمة مكتوبة لاسم يدل على سر</td><td><span class="ltr" dir="ltr">Wame…</span> (17 حرفًا)</td></tr>
+    <tr><td><span class="ltr" dir="ltr">notes.txt:3</span></td><td>كلمة سر مكتوبة في ملاحظة</td><td><span class="ltr" dir="ltr">Wame…</span> (17 حرفًا)</td></tr>
+    <tr class="hl"><td colspan="3">عدد ما وُجد: 3</td></tr>
+  </table>
   <div class="cols cols-2 mt">
     <div class="card c-teal flat"><p class="small mb0"><b>ما يجده:</b> أنماطًا معروفة: اسم يدل على سر وبجانبه قيمة، أو سلسلة طويلة تشبه مفتاحًا.</p></div>
     <div class="card c-coral flat"><p class="small mb0"><b>ما لا يجده:</b> سرًّا باسم بريء، أو في صورة، أو في محادثة المنصة. الفحص النظيف ليس براءة.</p></div>
   </div>
-  <aside class="notes"><p>الأسطر الثلاثة من تشغيل الفحص التدريبي على النسخة المزروعة، مترجمة هنا إلى الإنجليزية لتُعرض في مربع الشيفرة: الفحص نفسه يطبعها بالعربية. وعلى الحالة المرجعية يطبع صفرًا. الفحص التدريبي ملف صغير في حزمة المختبر. في الجهة يشغّل الميسِّر أو تقنية المعلومات فاحصًا معتمدًا، مثل <span class="en">gitleaks</span>، أو يُستخدم فحص المنصة. المشارك لا يحتاج إلى فهم الشيفرة ليقرأ سطرًا فيه اسم وقيمة بين علامتَي تنصيص.</p><p>المصادر: <span class="en">Gitleaks README</span>.</p></aside>
+  <aside class="notes"><p>الأسطر الثلاثة كما يطبعها الفحص التدريبي على النسخة المزروعة، في جدول: كل سطر في التقرير اسم الملف ورقم السطر، ثم السبب، ثم أول أربعة أحرف من القيمة وطولها، فلا يعرض الفحص السر كاملًا. وعلى الحالة المرجعية يطبع صفرًا. الفحص التدريبي ملف صغير في حزمة المختبر. في الجهة يشغّل الميسِّر أو تقنية المعلومات فاحصًا معتمدًا، مثل <span class="en">gitleaks</span>، أو يُستخدم فحص المنصة. المشارك لا يحتاج إلى فهم الشيفرة ليقرأ سطرًا فيه اسم وقيمة بين علامتَي تنصيص.</p><p>المصادر: <span class="en">Gitleaks README</span>.</p></aside>
 </section>
 
 <section class="slide dark" id="passing-is-not-safe" data-lo="LO4" data-label="نجحت وليست سليمة">

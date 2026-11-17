@@ -43,6 +43,8 @@ def scan(folder):
 
 
 def main():
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     if len(sys.argv) != 2 or not Path(sys.argv[1]).is_dir():
         print("الاستخدام: uv run secrets_scan.py <المجلد>")
         return 2
