@@ -164,6 +164,7 @@ def serve(folder):
         finally:
             proc.terminate()
             proc.wait(timeout=10)
+            time.sleep(0.3)  # Windows releases the folder a moment after the process ends
             proc.stderr.close()
 
 
